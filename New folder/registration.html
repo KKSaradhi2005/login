@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link rel="stylesheet" href="style.css">
+         
+    <title>Login & Registration Form</title> 
+</head>
+<body>
+    
+    <div class="container1">
+        <div class="forms">
+            <div class="form login">
+                <span class="title">Register</span>
+
+                <form id="registerForm">
+                    <div class="input-field">
+                        <input type="text" id="name" name="name" placeholder="Name" required>
+                        <i class="uil uil-user icon"></i>
+                    </div>
+                    <div class="input-field">
+                        <input type="email" id="email" name="email" placeholder="Email" required>
+                        <i class="uil uil-envelope icon"></i>
+                        
+                    </div>
+                    <div class="input-field">
+                      <input type="password" id="password" name="password" placeholder="Password" required>
+                      <i class="uil uil-lock icon"></i>
+                      <i class="uil uil-eye-slash showHidePw"></i>
+                   </div>
+                    <div class="input-field">
+                      <input type="confirm password" id="confirm password" name="confirm password" placeholder="Confirm Password" required>
+                      <i class="uil uil-lock icon"></i>
+                      <i class="uil uil-eye-slash showHidePw"></i>
+                   </div>
+                              
+                   
+                    <div class="input-field button">
+                        <input type="submit" value="Register">
+                        <li><a href="#">Register</a></li>
+                    </div>
+              
+
+                <div class="login-signup">
+                    <span class="text">Already a member?
+                        <a href="http://127.0.0.1:5500/index.html" class="text signup-link">Login Now</a>
+                        
+                       
+                          
+                    </span>
+                </div>
+              </form>  
+            </div>
+
+          
+        </div>
+    </div>
+    
+    
+   <script src="server.js"></script>
+  
+
+<script>
+  document.getElementById('form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const name = form.name.value
+    const email = document.getElementById('email').value;
+    const Password = document.getElementById('password').value;
+    const confirm Password = document.getElementById('confirm password').value;
+    
+    fetch('http://localhost:3000/register', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ name, email, password })
+    })
+    .then(response => response.text())
+    .then(data => alert(data))
+    .catch(error => console.error('Error:', error));
+  });
+</script>
+</body>
+</html>
